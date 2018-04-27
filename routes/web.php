@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'IndexController@index');
+
+Route::group(['prefix' => 'index'], function()
+{
+    Route::get('sidebar', 'IndexController@sidebar');
+});
+
+Route::group(['prefix' => 'post'], function()
+{
+    Route::get('show', 'PostController@show');
 });
