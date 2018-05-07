@@ -9,10 +9,44 @@
     <link href="{{ URL::asset('bower_components/nprogress/nprogress.css') }}" media='all' rel='stylesheet' type='text/css' />
     <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <script defer src="{{ URL::asset('js/fontawesome-all.js') }}"></script>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet"> -->
     <style>
-    /* stylelint-disable selector-list-comma-newline-after */
+    /* google fonts api fk wall */
+    /* latin-ext */
+    @font-face {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBYf9lWAe5j5hNKe1_w.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBYf9lW4e5j5hNKc.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* latin-ext */
+    @font-face {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Playfair Display Black'), local('PlayfairDisplay-Black'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBb__lWAe5j5hNKe1_w.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+        font-family: 'Playfair Display';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Playfair Display Black'), local('PlayfairDisplay-Black'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBb__lW4e5j5hNKc.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
 
+    /* stylelint-disable selector-list-comma-newline-after */
     .blog-header {
       line-height: 1;
       border-bottom: 1px solid #e5e5e5;
@@ -153,14 +187,14 @@
     </script>
 </head>
 <body style="background-color: #f7f7f9;">
-    <div class="container" id="pjax-container">
+    <div class="container">
         <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
-                    <a class="text-muted" href="#">Subscribe</a>
+                    <a class="text-muted" href="/">首页</a>
                 </div>
                 <div class="col-4 text-center">
-                    <a class="blog-header-logo text-dark" href="#">Large</a>
+                    <i class="fas fa-2x fa-leaf text-success"></i><a class="blog-header-logo text-dark" href="#">等我想个名字，没有的话，那就这样</a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a class="text-muted" href="#">
@@ -188,20 +222,28 @@
         </div>
         @yield('content')
     </div>
-    @yield('main')
+    <main role="main" class="container" id="pjax-container">
+        @yield('main')
+    </main><!-- /.container -->
 
     <footer class="blog-footer">
-      <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
+        <!-- Blog template built from bootstrap by @mdo -->
+        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
     </footer>
 <script src="{{ URL::asset('bower_components/jquery-pjax/jquery.pjax.js') }}"></script>
 <script src="{{ URL::asset('bower_components/nprogress/nprogress.js') }}"></script>
 <script>
     $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container');
     $(document).on('pjax:start', function() {NProgress.start();});
-    $(document).on('pjax:end', function() {NProgress.done();});
+    $(document).on('pjax:end', function() {
+        NProgress.done();
+        $(this).load('/index/sidebar', function(html) {
+            $('.blog-main').after(html);
+        });
+    });
     $(document).on('ajaxSend', function() {NProgress.start();});
     $(document).on('ajaxComplete', function() {NProgress.done();});
 </script>
@@ -209,4 +251,5 @@
 </html>
 @else
 @yield('content')
+@yield('main')
 @endif

@@ -11,7 +11,8 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
-    $router->get('/post', 'PostController@index');
-    $router->get('/post/create', 'PostController@create');
-    $router->post('/post/save', 'PostController@save');
+    // $router->get('/post', 'PostController@index');
+    // $router->get('/post/create', 'PostController@create');
+    // $router->post('/post/save', 'PostController@save');
+    $router->resource('post', PostController::class);
 });

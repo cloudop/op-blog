@@ -16,15 +16,28 @@ class PostController extends Controller
     {
         try {
             $input = $request->only('id');
-            $postData = Models\PostModel::where([
-                'id' => $input['id']
-            ])->first();
-            if (empty($postData)) {
-                throw new \Exception('post empty');
-            }
             $assignArr = [
-                'postData' => $postData
+                'prevId' => false,
+                'nextId' => false
             ];
+            $cond = [
+                ['id', '>=', $input['id']]
+            ];
+            $rs = Models\PostModel::where($cond)->orderBy('id', 'asc')->take(2)->get();
+            if ($rs) {
+                foreach ($rs->toArray() as $key => $value) {
+                    if ($value['id'] == $input['id']) {
+                        $assignArr['postData'] = $value;
+                    }
+                    if ($value['id'] > $input['id']) {
+                        $assignArr['nextId'] = $value['id'];
+                    }
+                }
+            }
+            $preData = Models\PostModel::select('id')->where([['id', '<', $input['id']]])->orderBy('id', 'desc')->first();
+            if (!empty($preData)) {
+                $assignArr['prevId'] = $preData['id'];
+            }
             return view('post/show', $assignArr);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
