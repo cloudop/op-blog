@@ -4,8 +4,16 @@
 <script src="{{ URL::asset('js/highlight.js') }}"></script>
 <script>
     $(document).ready(function() {
+        // 代码高亮
         $('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
+        });
+        // 同分类边栏
+        $(this).load('/post/sidebar?category_id={{$postData['category_id']}}&id={{$postData['id']}}', function(html) {
+            if ($('aside.blog-sidebar').length) {
+                $('aside.blog-sidebar').remove();
+            }
+            $('.blog-main').after(html);
         });
     });
 </script>

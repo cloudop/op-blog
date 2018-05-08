@@ -19,7 +19,7 @@
                 <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                 <a href="#">Continue reading</a>
             </div>
-            <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+            <img class="card-img-right flex-auto d-none d-md-block" src="/tmp.svg" alt="Card image cap">
         </div>
     </div>
     <div class="col-md-6">
@@ -33,7 +33,7 @@
                 <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                 <a href="#">Continue reading</a>
             </div>
-            <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+            <img class="card-img-right flex-auto d-none d-md-block" src="/tmp.svg" alt="Card image cap">
         </div>
     </div>
 </div>
@@ -113,4 +113,11 @@
 
 
 </div><!-- /.row -->
+<script>
+$(document).ready(function() {
+    $(this).load('/index/sidebar', function(html) {
+        $('.blog-main').after(html);
+    });
+});
+</script>
 @endsection

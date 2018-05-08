@@ -4,7 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PostModel extends Model
+class Post extends Model
 {
-    protected $table = 'posts';
+    function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

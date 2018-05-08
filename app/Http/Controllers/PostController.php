@@ -9,7 +9,6 @@ class PostController extends Controller
 {
     public function __construct()
     {
-
     }
 
     public function show(Request $request)
@@ -23,7 +22,7 @@ class PostController extends Controller
             $cond = [
                 ['id', '>=', $input['id']]
             ];
-            $rs = Models\PostModel::where($cond)->orderBy('id', 'asc')->take(2)->get();
+            $rs = Models\Post::where($cond)->orderBy('id', 'asc')->take(2)->get();
             if ($rs) {
                 foreach ($rs->toArray() as $key => $value) {
                     if ($value['id'] == $input['id']) {
@@ -34,13 +33,38 @@ class PostController extends Controller
                     }
                 }
             }
-            $preData = Models\PostModel::select('id')->where([['id', '<', $input['id']]])->orderBy('id', 'desc')->first();
+            $preData = Models\Post::select('id')->where([['id', '<', $input['id']]])->orderBy('id', 'desc')->first();
             if (!empty($preData)) {
                 $assignArr['prevId'] = $preData['id'];
             }
             return view('post/show', $assignArr);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
+        }
+    }
+
+    public function sidebar(Request $request)
+    {
+        try {
+            $input = $request->only('category_id', 'id');
+            $postRs = Models\Post::select('id', 'head')
+                        ->where([
+                                ['category_id', $input['category_id']],
+                                ['id', '<>', $input['id']]
+                            ])
+                        ->orderBy('id', 'asc')
+                        ->take(10)
+                        ->get();
+            $postArr = [];
+            if ($postRs) {
+                $postArr = $postRs->toArray();
+            }
+            $assignArr = [
+                'postArr' => $postArr
+            ];
+            return view('post/sidebar', $assignArr);
+        } catch (\Exception $e) {
+            echo $e->getMessage();
         }
     }
 

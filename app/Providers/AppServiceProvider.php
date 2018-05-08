@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (!isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+            $catRs = Models\Category::select('id', 'name')->get();
+            $category = [];
+            if ($catRs) {
+                $category = $catRs->toArray();
+            }
+            View::share('category', $category);
+        }
     }
 
     /**

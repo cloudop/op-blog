@@ -15,4 +15,5 @@ Route::group([
     // $router->get('/post/create', 'PostController@create');
     // $router->post('/post/save', 'PostController@save');
     $router->resource('post', PostController::class);
+    $router->resource('category', CategoryController::class);
 });

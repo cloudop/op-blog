@@ -3,13 +3,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Models;
+use App\Models;
 
 class IndexController extends Controller
 {
     public function __construct()
     {
-
     }
 
 
@@ -29,7 +28,7 @@ class IndexController extends Controller
         try {
             $assignArr = [
             ];
-            return view('public/sidebar', $assignArr);
+            return view('index/sidebar', $assignArr);
         } catch (\Exception $e) {
 
         }

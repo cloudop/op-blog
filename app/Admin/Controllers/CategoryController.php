@@ -19,40 +19,30 @@ use Illuminate\Support\MessageBag;
 use App\Models;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
     public function index()
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Post Index');
+            $content->header('分类列表');
             $content->row(function (Row $row) {
                 $row->column(12, function (Column $column) {
-                    $grid = Admin::grid(Models\Post::class, function(Grid $grid){
-                        // 第一列显示id字段，并将这一列设置为可排序列
+                    $grid = Admin::grid(Models\Category::class, function(Grid $grid){
                         $grid->id('Id')->sortable();
-                        $grid->head('标题')->editable()->setAttributes(['width' => '40%']);
-                        $grid->author('作者');
-                        $grid->category('分类')->name();
-                        // 第二列显示title字段，由于title字段名和Grid对象的title方法冲突，所以用Grid的column()方法代替
-                        // $grid->column('title');
-                        // 第三列显示director字段，通过display($callback)方法设置这一列的显示内容为users表中对应的用户名
-                        // $grid->director()->display(function($userId) {
-                        //     return User::find($userId)->name;
+                        $grid->name('名称')->editable()->setAttributes(['width' => '40%']);
+                        // 影响性能，算了
+                        // $grid->posts('文章数')->display(function ($posts) {
+                        //     $count = count($posts);
+                        //     return "<span class='label label-warning'>{$count}</span>";
                         // });
-                        // 下面为三个时间字段的列显示
                         $grid->created_at('创建时间');
-                        // filter($callback)方法用来设置表格的简单搜索框
                         $grid->filter(function ($filter) {
-                            // 设置created_at字段的范围查询
                             $filter->between('created_at', 'Created Time')->datetime();
                         });
-                        // 默认为每页20条
-                        $grid->paginate(10);
-
+                        $grid->paginate(20);
                         $grid->disableExport();
                     });
-                    // return $grid;
                     $column->append($grid);
                 });
             });
@@ -64,7 +54,7 @@ class PostController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-            $content->header('post');
+            $content->header('分类');
             $content->row(function (Row $row) {
                 $row->column(12, function (Column $column) {
                     $column->append($this->_createForm());
@@ -79,20 +69,8 @@ class PostController extends Controller
      */
     private function _createForm($id = null)
     {
-        return Admin::form(Models\Post::class, function (Form $form) use ($id){
-            $form->text('author', '作者')->rules('required');
-            $catRs = Models\Category::select('id', 'name')->get();
-            $catOptions = [];
-            if ($catRs) {
-                foreach ($catRs->toArray() as $value) {
-                    $catOptions[$value['id']] = $value['name'];
-                }
-            }
-            $form->select('category_id', '分类')->options($catOptions)->rules('required');
-            $form->text('head', '标题')->rules('required');
-            $form->text('subhead', '副标题')->rules('required');
-            $form->textarea('guide')->rows(5)->rules('required');
-            $form->editor('content')->rules('required');
+        return Admin::form(Models\Category::class, function (Form $form) use ($id){
+            $form->text('name', '名称')->rules('required');
             $form->display('created_at', 'Created At')->rules('required');
             // 抛出错误信息
             // saving和saved在展示表单的时候是冗余的
