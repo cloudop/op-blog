@@ -1,7 +1,5 @@
 @extends('public/wrap')
 @section('main')
-<link href="{{ URL::asset('css/highlight/atom-one-dark.css') }}" media='all' rel='stylesheet' type='text/css' />
-<script src="{{ URL::asset('js/highlight.js') }}"></script>
 <script>
     $(document).ready(function() {
         // 代码高亮
@@ -28,13 +26,13 @@
             {!!$postData['content']!!}
         </div><!-- /.blog-post -->
         <nav class="blog-pagination">
-            @if ($prevId)
-            <a class="btn btn-outline-primary" href="/post/show?id={{$prevId}}" data-pjax>Older</a>
+            @if ($prev)
+            <a class="btn btn-outline-primary" href="/post/show?id={{$prev['id']}}" data-pjax>Older</a>
             @else
             <a class="btn btn-outline-secondary disabled">Older</a>
             @endif
-            @if ($nextId)
-            <a class="btn btn-outline-primary" href="/post/show?id={{$nextId}}" data-pjax>Newer</a>
+            @if ($next)
+            <a class="btn btn-outline-primary" href="/post/show?id={{$next['id']}}" data-pjax>Newer</a>
             @else
             <a class="btn btn-outline-secondary disabled">Newer</a>
             @endif

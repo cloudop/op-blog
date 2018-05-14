@@ -29,13 +29,13 @@ class PostController extends Controller
                         $assignArr['postData'] = $value;
                     }
                     if ($value['id'] > $input['id']) {
-                        $assignArr['nextId'] = $value['id'];
+                        $assignArr['next'] = $value;
                     }
                 }
             }
-            $preData = Models\Post::select('id')->where([['id', '<', $input['id']]])->orderBy('id', 'desc')->first();
+            $preData = Models\Post::select('id', 'head')->where([['id', '<', $input['id']]])->orderBy('id', 'desc')->first();
             if (!empty($preData)) {
-                $assignArr['prevId'] = $preData['id'];
+                $assignArr['prev'] = $preData;
             }
             return view('post/show', $assignArr);
         } catch (\Exception $e) {

@@ -15,11 +15,28 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         try {
+            $postRs = Models\Post::with('category:id,name')
+                        ->select('id', 'author', 'head', 'subhead', 'guide', 'created_at', 'category_id', 'content')
+                        ->orderBy('id', 'desc')
+                        ->take(10)
+                        ->get();
+            $postData = [];
             $assignArr = [
+                'bannerPost' => [],
+                'recommendPost' => [],
+                'posts' => []
             ];
+            if (count($postRs) > 0) {
+                $postData = $postRs->toArray();
+                $assignArr = [
+                    'bannerPost' => array_shift($postData),
+                    'recommendPost' => array_splice($postData, 0, 2),
+                    'posts' => $postData
+                ];
+            }
             return view('index/index', $assignArr);
         } catch (\Exception $e) {
-
+            echo $e->getMessage();
         }
     }
 

@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="{{ URL::asset('bower_components/bootstrap/dist/css/bootstrap.css') }}" media='all' rel='stylesheet' type='text/css' />
     <link href="{{ URL::asset('bower_components/nprogress/nprogress.css') }}" media='all' rel='stylesheet' type='text/css' />
+    <link href="{{ URL::asset('css/highlight/atom-one-dark.css') }}" media='all' rel='stylesheet' type='text/css' />
     <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script defer src="{{ URL::asset('js/fontawesome-all.js') }}"></script>
@@ -190,10 +191,10 @@
                     <i class="fas fa-2x fa-leaf text-success"></i><a class="blog-header-logo text-dark" href="#">等我想个名字，没有的话，那就这样</a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="text-muted" href="#">
+                    <!-- <a class="text-muted" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
                     </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a> -->
                 </div>
             </div>
         </header>
@@ -204,7 +205,6 @@
                 @endforeach
             </nav>
         </div>
-        @yield('content')
     </div>
     <main role="main" class="container" id="pjax-container">
         @yield('main')
@@ -219,6 +219,7 @@
     </footer>
 <script src="{{ URL::asset('bower_components/jquery-pjax/jquery.pjax.js') }}"></script>
 <script src="{{ URL::asset('bower_components/nprogress/nprogress.js') }}"></script>
+<script src="{{ URL::asset('js/highlight.js') }}"></script>
 <script>
     $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container');
     $(document).on('pjax:start', function() {NProgress.start();});
@@ -229,6 +230,5 @@
 </body>
 </html>
 @else
-@yield('content')
 @yield('main')
 @endif
