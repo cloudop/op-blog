@@ -1,4 +1,4 @@
-public/* linguist-vendored
+public/* linguist-vendored=false
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
