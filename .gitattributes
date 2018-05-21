@@ -1,4 +1,5 @@
 public/bower_components/* linguist-vendored
+*.css linguist-language=php
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
