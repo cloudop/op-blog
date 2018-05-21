@@ -1,4 +1,4 @@
-public/* linguist-vendored=false
+public/bower_components/* linguist-vendored
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
