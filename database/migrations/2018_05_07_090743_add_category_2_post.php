@@ -26,7 +26,7 @@ class AddCategory2Post extends Migration
      */
     public function down()
     {
-        Schema::table('wxusers', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             $table->dropColumn('category_id');
         });
     }
