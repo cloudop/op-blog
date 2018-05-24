@@ -18,6 +18,14 @@
                 $(element).attr('src', canvas.toDataURL());
             });
         });
+
+        $(this).load('/index/sidebar', function(html) {
+            if ($('aside.blog-sidebar').length) {
+                $('aside.blog-sidebar').remove();
+            }
+            $('.blog-main').after(html);
+        });
+
     })
 </script>
 <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
@@ -85,11 +93,4 @@
 
     </div><!-- /.blog-main -->
 </div><!-- /.row -->
-<script>
-$(document).ready(function() {
-    $(this).load('/index/sidebar', function(html) {
-        $('.blog-main').after(html);
-    });
-});
-</script>
 @endsection

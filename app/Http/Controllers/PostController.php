@@ -16,8 +16,8 @@ class PostController extends Controller
         try {
             $input = $request->only('id');
             $assignArr = [
-                'prevId' => false,
-                'nextId' => false
+                'prev' => false,
+                'next' => false
             ];
             $cond = [
                 ['id', '>=', $input['id']]

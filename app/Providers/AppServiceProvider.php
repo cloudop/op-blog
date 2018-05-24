@@ -23,6 +23,12 @@ class AppServiceProvider extends ServiceProvider
             }
             View::share('category', $category);
         }
+        $aboutMe = [
+            'name' => '林 云开',
+            'github' => 'https://github.com/cloudop',
+            'email' => 'cloudop@gmail.com'
+        ];
+        View::share('aboutMe', $aboutMe);
     }
 
     /**
