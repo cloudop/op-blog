@@ -45,7 +45,6 @@
                 </h3>
                 <div class="mb-1 text-muted">{{Carbon\Carbon::parse($recommendPost[0]['created_at'])->format('M j')}}</div>
                 <p class="card-text mb-auto">{{$recommendPost[0]['guide']}}</p>
-                <a data-pjax href="/post/show?id={{$recommendPost[0]['id']}}">继续阅读</a>
             </div>
             <img class="card-img-right flex-auto d-none d-md-block border-left" data-thumbnail="thumb{{$recommendPost[0]['id']}}" src="/tmp.svg">
         </div>

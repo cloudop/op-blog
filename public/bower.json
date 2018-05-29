@@ -1,0 +1,27 @@
+{
+  "name": "op-blog-public",
+  "homepage": "https://github.com/cloudop/op-blog",
+  "authors": [
+    "林云开 <cloudop@gmail.com>"
+  ],
+  "description": "op-blog frontend dependencies",
+  "main": "",
+  "keywords": [
+    "op-blog"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.0",
+    "jquery-pjax": "^2.0.1",
+    "nprogress": "^0.2.0",
+    "wangEditor": "^3.1.1"
+  }
+}

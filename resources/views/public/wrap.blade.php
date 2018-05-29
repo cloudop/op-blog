@@ -188,7 +188,7 @@
                     <a class="text-muted" href="/">首页</a>
                 </div>
                 <div class="col-4 text-center">
-                    <i class="fas fa-2x fa-leaf text-success"></i><a class="blog-header-logo text-dark" href="#">等我想个名字，没有的话，那就这样</a>
+                    <i class="fas fa-2x fa-leaf text-success"></i><a class="blog-header-logo text-dark" href="#">西瓜炒面</a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <!-- <a class="text-muted" href="#">
