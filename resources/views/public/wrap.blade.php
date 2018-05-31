@@ -1,10 +1,11 @@
 @if (Request::ajax() == false)
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <title></title>
+    <title>{{$title}}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=”description” content="{{$guide}}">
     <link href="{{ URL::asset('bower_components/bootstrap/dist/css/bootstrap.css') }}" media='all' rel='stylesheet' type='text/css' />
     <link href="{{ URL::asset('bower_components/nprogress/nprogress.css') }}" media='all' rel='stylesheet' type='text/css' />
     <link href="{{ URL::asset('css/highlight/atom-one-dark.css') }}" media='all' rel='stylesheet' type='text/css' />

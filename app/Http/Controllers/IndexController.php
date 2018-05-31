@@ -27,8 +27,16 @@ class IndexController extends Controller
                 'posts' => []
             ];
             if (count($postRs) > 0) {
-                $postData = $postRs->toArray();
+                $guideShowLen = 70;
+                foreach ($postRs as $value) {
+                    if (mb_strlen($value['guide']) > $guideShowLen) {
+                        $value['guide'] = mb_substr($value['guide'], 0, $guideShowLen). '...';
+                    }
+                    $postData[] = $value;
+                }
                 $assignArr = [
+                    'title' => '西瓜炒面',
+                    'guide' => '林云开的个人站',
                     'bannerPost' => array_shift($postData),
                     'recommendPost' => array_splice($postData, 0, 2),
                     'posts' => $postData

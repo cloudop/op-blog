@@ -37,6 +37,8 @@ class PostController extends Controller
             if (!empty($preData)) {
                 $assignArr['prev'] = $preData;
             }
+            $assignArr['title'] = $assignArr['postData']['head'];
+            $assignArr['guide'] = $assignArr['postData']['guide'];
             return view('post/show', $assignArr);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
