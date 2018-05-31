@@ -28,8 +28,8 @@ class IndexController extends Controller
             ];
             if (count($postRs) > 0) {
                 $guideShowLen = 70;
-                foreach ($postRs as $value) {
-                    if (mb_strlen($value['guide']) > $guideShowLen) {
+                foreach ($postRs as $key => $value) {
+                    if ($key < 3 && mb_strlen($value['guide']) > $guideShowLen) {
                         $value['guide'] = mb_substr($value['guide'], 0, $guideShowLen). '...';
                     }
                     $postData[] = $value;
