@@ -9,6 +9,7 @@
     <link href="{{ URL::asset('bower_components/bootstrap/dist/css/bootstrap.css') }}" media='all' rel='stylesheet' type='text/css' />
     <link href="{{ URL::asset('bower_components/nprogress/nprogress.css') }}" media='all' rel='stylesheet' type='text/css' />
     <link href="{{ URL::asset('css/highlight/atom-one-dark.css') }}" media='all' rel='stylesheet' type='text/css' />
+    <link href="{{ URL::asset('css/screen.min.css') }}" media='all' rel='stylesheet' type='text/css' />
     <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script defer src="{{ URL::asset('js/fontawesome-all.js') }}"></script>
@@ -81,6 +82,9 @@
       z-index: 2;
       height: 2.75rem;
       overflow-y: hidden;
+      /* background-color: #485b7c; */
+      background-color: #444;
+      line-height: 1.6em;
     }
 
     .nav-scroller .nav {
@@ -95,6 +99,7 @@
       text-align: center;
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
+      float: left;
     }
 
     .nav-scroller .nav-link {
@@ -155,15 +160,29 @@
      * Blog posts
      */
     .blog-post {
-      margin-bottom: 4rem;
+      padding: 20px 0 20px 10px;
+      background: #fff;
+      margin-left: 0;
+      margin-right: 0;
+      position: relative;
+      overflow: hidden;
     }
     .blog-post-title {
       margin-bottom: .25rem;
       font-size: 2.5rem;
     }
     .blog-post-meta {
-      margin-bottom: 1.25rem;
+      margin-bottom: 0;
       color: #999;
+    }
+    .blog-post p {
+        font-size: 15px;
+    }
+    .blog-main {
+        padding-right: 0;
+    }
+    .blog-sidebar {
+        padding-left: 0;
     }
 
     /*
@@ -175,9 +194,26 @@
       text-align: center;
       background-color: #f9f9f9;
       border-top: .05rem solid #e5e5e5;
+      margin-top: 10px;
     }
     .blog-footer p:last-child {
       margin-bottom: 0;
+    }
+
+
+    .container a {
+        color: #d33;
+    }
+    .container a:hover {
+        color: #4285f4;
+        text-decoration: none;
+    }
+    .container a:visited {
+        color: #444;
+    }
+
+    .row_striped {
+        background: #fcfdff;
     }
     </style>
 </head>
@@ -189,20 +225,13 @@
                     <a class="text-muted" href="/">首页</a>
                 </div>
                 <div class="col-4 text-center">
-                    <i class="fas fa-2x fa-leaf text-success"></i><a class="blog-header-logo text-dark" href="#">西瓜炒面</a>
-                </div>
-                <div class="col-4 d-flex justify-content-end align-items-center">
-                    <!-- <a class="text-muted" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-                    </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a> -->
                 </div>
             </div>
         </header>
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
                 @foreach ($category as $value)
-                <a class="p-2 text-muted" href="#">{{$value['name']}}</a>
+                <a class="p-2 text-light" href="#">{{$value['name']}}</a>
                 @endforeach
             </nav>
         </div>
@@ -212,7 +241,6 @@
     </main><!-- /.container -->
 
     <footer class="blog-footer">
-        <!-- Blog template built from bootstrap by @mdo -->
         <p>
             <a href="#">Back to top</a>
         </p>

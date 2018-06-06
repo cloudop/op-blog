@@ -37,12 +37,12 @@ class IndexController extends Controller
                 $assignArr = [
                     'title' => '西瓜炒面',
                     'guide' => '林云开的个人站',
-                    'bannerPost' => array_shift($postData),
-                    'recommendPost' => array_splice($postData, 0, 2),
+                    // 'bannerPost' => array_shift($postData),
+                    // 'recommendPost' => array_splice($postData, 0, 2),
                     'posts' => $postData
                 ];
             }
-            return view('index/index', $assignArr);
+            return view('index/index0', $assignArr);
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

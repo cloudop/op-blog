@@ -40,9 +40,9 @@
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
                 <strong class="d-inline-block mb-2 text-primary">{{$recommendPost[0]['category']['name']}}</strong>
-                <h3 class="mb-0">
+                <h5 class="mb-0">
                     <a data-pjax class="text-dark" href="/post/show?id={{$recommendPost[0]['id']}}">{{$recommendPost[0]['head']}}</a>
-                </h3>
+                </h5>
                 <div class="mb-1 text-muted">{{Carbon\Carbon::parse($recommendPost[0]['created_at'])->format('M j')}}</div>
                 <p class="card-text mb-auto">{{$recommendPost[0]['guide']}}</p>
             </div>
@@ -56,9 +56,9 @@
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
                 <strong class="d-inline-block mb-2 text-primary">{{$recommendPost[1]['category']['name']}}</strong>
-                <h3 class="mb-0">
+                <h5 class="mb-0">
                     <a data-pjax class="text-dark" href="/post/show?id={{$recommendPost[1]['id']}}">{{$recommendPost[1]['head']}}</a>
-                </h3>
+                </h5>
                 <div class="mb-1 text-muted">{{Carbon\Carbon::parse($recommendPost[1]['created_at'])->format('M j')}}</div>
                 <p class="card-text mb-auto">{{$recommendPost[1]['guide']}}</p>
             </div>
