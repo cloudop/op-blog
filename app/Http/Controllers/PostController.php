@@ -39,6 +39,7 @@ class PostController extends Controller
             }
             $assignArr['title'] = $assignArr['postData']['head'];
             $assignArr['guide'] = $assignArr['postData']['guide'];
+            $assignArr['categoryId'] = $assignArr['postData']['category_id'];
             return view('post/show', $assignArr);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());

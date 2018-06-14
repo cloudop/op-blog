@@ -17,12 +17,12 @@
 </script>
 <div class="row">
     <div class="col-md-8 blog-main">
-        <h3 class="pb-3 mb-4 font-italic border-bottom">
+        <!-- <h3 class="pb-3 mb-4 font-italic border-bottom">
             From the Firehose
-        </h3>
+        </h3> -->
         <div class="blog-post">
             <h2 class="blog-post-title">{{$postData['head']}}</h2>
-            <p class="blog-post-meta">{{Carbon\Carbon::parse($postData['created_at'])->format('Y-m-d')}} by <a href="#">{{$postData['author']}}</a></p>
+            <p class="blog-post-meta border-bottom">{{Carbon\Carbon::parse($postData['created_at'])->format('Y-m-d')}} by <a href="#">{{$postData['author']}}</a></p>
             {!!$postData['content']!!}
         </div><!-- /.blog-post -->
         <nav class="blog-pagination">

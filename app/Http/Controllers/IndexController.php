@@ -7,41 +7,39 @@ use App\Models;
 
 class IndexController extends Controller
 {
-    public function __construct()
-    {
-    }
-
 
     public function index(Request $request)
     {
         try {
+            $input = $request->only('category_id');
+            $cond = [];
+            $input['category_id'] = empty($input['category_id'])? 0: intval($input['category_id']);
+            if ($input['category_id'] > 0) {
+                $cond['category_id'] = (int) $input['category_id'];
+            }
             $postRs = Models\Post::with('category:id,name')
                         ->select('id', 'author', 'head', 'subhead', 'guide', 'created_at', 'category_id', 'content')
+                        ->where($cond)
                         ->orderBy('id', 'desc')
-                        ->take(10)
+                        ->take(20)
                         ->get();
             $postData = [];
-            $assignArr = [
-                'bannerPost' => [],
-                'recommendPost' => [],
-                'posts' => []
-            ];
-            if (count($postRs) > 0) {
-                $guideShowLen = 70;
-                foreach ($postRs as $key => $value) {
-                    if ($key < 3 && mb_strlen($value['guide']) > $guideShowLen) {
+            if (!empty($postRs)) {
+                $guideShowLen = 105;
+                foreach ($postRs->toArray() as $key => $value) {
+                    if (mb_strlen($value['guide']) > $guideShowLen) {
                         $value['guide'] = mb_substr($value['guide'], 0, $guideShowLen). '...';
                     }
                     $postData[] = $value;
                 }
-                $assignArr = [
-                    'title' => '西瓜炒面',
-                    'guide' => '林云开的个人站',
-                    // 'bannerPost' => array_shift($postData),
-                    // 'recommendPost' => array_splice($postData, 0, 2),
-                    'posts' => $postData
-                ];
+
             }
+            $assignArr = [
+                'title' => 'clougop',
+                'guide' => '林云开的个人站',
+                'posts' => $postData,
+                'categoryId' => $input['category_id']
+            ];
             return view('index/index0', $assignArr);
         } catch (\Exception $e) {
             echo $e->getMessage();
