@@ -64,7 +64,7 @@
                 <h4><a class="post-head" data-pjax href="/post/show?id={{$post['id']}}">{{$post['head']}}</a></h4>
                 <p class="blog-post-meta"> <a class="text-muted" href="">{{$post['author']}}</a> · <a class="text-muted" href="">{{$post['category']['name']}}</a></p>
                 <p class="post-guide">{{$post['guide']}}</p>
-                <p class="post-date"><small class="text-muted">{{Carbon\Carbon::parse($post['created_at'])->format('Y-m-d')}}</small></p>
+                <p class="post-date"><em><small class="text-muted">{{Carbon\Carbon::parse($post['created_at'])->format('Y-m-d')}}</small></em></p>
                 <div style="display: relative;">
                     <div id="thumb{{$post['id']}}" style="width:450px;height:450px;padding: 10px; position: fixed;z-index: -1; background-color: #f8f9fa;">
                         {!!$post['content']!!}

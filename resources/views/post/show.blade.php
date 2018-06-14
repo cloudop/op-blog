@@ -20,10 +20,11 @@
         <!-- <h3 class="pb-3 mb-4 font-italic border-bottom">
             From the Firehose
         </h3> -->
-        <div class="blog-post">
+        <div class="blog-post border shadow">
             <h2 class="blog-post-title">{{$postData['head']}}</h2>
-            <p class="blog-post-meta border-bottom">{{Carbon\Carbon::parse($postData['created_at'])->format('Y-m-d')}} by <a href="#">{{$postData['author']}}</a></p>
+            <p class="blog-post-meta border-bottom">{{Carbon\Carbon::parse($postData['created_at'])->format('Y-m-d')}} by <a class="text-muted" href="#">{{$postData['author']}}</a></p>
             {!!$postData['content']!!}
+            <hr class="hr-dashed">
         </div><!-- /.blog-post -->
         <nav class="blog-pagination">
             @if ($prev)

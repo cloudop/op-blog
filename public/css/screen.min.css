@@ -437,7 +437,7 @@ pre {
 
 .sidebar .widget {
     background: #fff;
-    padding: 21px 30px
+    padding: 21px 30px;
 }
 
 .main-footer .widget {
@@ -445,7 +445,7 @@ pre {
 }
 
 .widget {
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }
 
 .widget .title {

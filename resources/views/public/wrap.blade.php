@@ -136,22 +136,27 @@
 
     /* Pagination */
     .blog-pagination {
-      margin-bottom: 4rem;
+        margin-top: 15px;
+        margin-bottom: 4rem;
     }
     .blog-pagination > .btn {
-      border-radius: 2rem;
+        border-radius: 2rem;
     }
 
     /*
      * Blog posts
      */
     .blog-post {
-      padding: 10px 0 10px 0;
+      padding: 10px 15px 10px 15px;
+      /* padding: 15px; */
       background: #fff;
       margin-left: 0;
       margin-right: 0;
       position: relative;
       overflow: hidden;
+      /* border-top: 2px solid #dee2e6 !important;
+      border-bottom: 2px solid #dee2e6 !important; */
+      /* box-shadow: 2px 5px 7px rgba(0,0,0,.5); */
     }
     .blog-post-title {
       margin-bottom: .25rem;
@@ -194,7 +199,7 @@
         color: #4285f4;
         text-decoration: none;
     }
-    h4 a:visited {
+    .post-head:visited {
         color: #444;
     }
 
@@ -294,11 +299,23 @@
     .post-guide {
         margin-bottom: 5px;
     }
+    pre {
+        margin: 5px;
+        border-radius: 4px;
+        box-shadow: 2px 3px 5px rgba(0,0,0,.5);
+    }
+    .hr-dashed {
+        border-color: #DDD;
+        border-image: none;
+        border-style: none none dashed;
+        border-width: medium medium 1px;
+        margin-bottom: 10px;
+    }
     </style>
 </head>
 <body>
     <div class="container">
-        <h4 class="domain">clougop.com</h4>
+        <h4 class="domain"><font color="#a33133">clougop</font><font style="font-size:14px;">.com</font></h4>
         <!-- <canvas class="header_canvas" id="dy_canvas"></canvas> -->
         <!-- <header class="blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
