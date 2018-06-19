@@ -159,8 +159,8 @@
       /* box-shadow: 2px 5px 7px rgba(0,0,0,.5); */
     }
     .blog-post-title {
-      margin-bottom: .25rem;
-      font-size: 2.5rem;
+        margin: 15px 0 10px;
+        font-size: 2.5rem;
     }
     .blog-post-meta {
       margin-bottom: 0;
@@ -290,6 +290,7 @@
         font-size: none;
         margin-bottom: 0;
         margin-top: 10px;
+        padding-left: 3px;
     }
     .post-date {
         margin-bottom: 0;
