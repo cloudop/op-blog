@@ -23,14 +23,6 @@
         <div class="blog-post border shadow">
             <h2 class="blog-post-title">{{$postData['head']}}</h2>
             <p class="blog-post-meta border-bottom">{{Carbon\Carbon::parse($postData['created_at'])->format('Y-m-d')}} by <a class="text-muted" href="#">{{$postData['author']}}</a></p>
-
-            <div class="bd-callout bd-callout-danger">
-            <h4 id="specific-markup-required-for-dismiss-on-next-click">Specific markup required for dismiss-on-next-click</h4>
-
-            <p>For proper cross-browser and cross-platform behavior, you must use the <code class="highlighter-rouge">&lt;a&gt;</code> tag, <em>not</em> the <code class="highlighter-rouge">&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex"><code class="highlighter-rouge">tabindex</code></a> attribute.</p>
-            </div>
-
-
             {!!$postData['content']!!}
             <hr class="hr-dashed">
             <p>
