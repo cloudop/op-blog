@@ -27,10 +27,10 @@
             <hr class="hr-dashed">
             <p>
                 @if ($prev)
-                <a class="float-left text-muted glyphicon glyphicon-arrow-left" data-pjax href="/post/show?id={{$prev['id']}}">← {{$prev['head']}}</a>
+                <a class="float-left text-muted" data-pjax href="/post/{{$prev['id']}}/{{$prev['subhead']}}">← {{$prev['head']}}</a>
                 @endif
                 @if ($next)
-                <a class="float-right text-muted" data-pjax href="/post/show?id={{$next['id']}}">{{$next['head']}} →</a>
+                <a class="float-right text-muted" data-pjax href="/post/{{$next['id']}}/{{$next['subhead']}}">{{$next['head']}} →</a>
                 @endif
             </p>
         </div><!-- /.blog-post -->

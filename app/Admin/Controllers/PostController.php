@@ -14,6 +14,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Str;
 
 
 use App\Models;
@@ -79,7 +80,7 @@ class PostController extends Controller
      */
     private function _createForm($id = null)
     {
-        return Admin::form(Models\Post::class, function (Form $form) use ($id){
+        return Admin::form(Models\Post::class, function(Form $form) use ($id){
             $form->text('author', '作者')->rules('required');
             $catRs = Models\Category::select('id', 'name')->get();
             $catOptions = [];
@@ -90,19 +91,24 @@ class PostController extends Controller
             }
             $form->select('category_id', '分类')->options($catOptions)->rules('required');
             $form->text('head', '标题')->rules('required');
+            // 等pullrequest merge了之后
+            // $form->text('subhead', '副标题')->rules('required')->customFormat(function($value) {
+            //     return str_replace('-', ' ', $value);
+            // });
             $form->text('subhead', '副标题')->rules('required');
             $form->textarea('guide')->rows(5)->rules('required');
             $form->editor('content')->rules('required');
             $form->display('created_at', 'Created At')->rules('required');
             // 抛出错误信息
             // saving和saved在展示表单的时候是冗余的
-            // $form->saving(function ($form) {
-            //     $error = new MessageBag([
-            //         'title'   => 'title...',
-            //         'message' => 'message....',
-            //     ]);
-            //     return back()->with(compact('error'));
-            // });
+            $form->saving(function ($form) {
+                $form->subhead = Str::slug($form->subhead);
+                // $error = new MessageBag([
+                //     'title'   => 'title...',
+                //     'message' => 'message....',
+                // ]);
+                // return back()->with(compact('error'));
+            });
         });
     }
 

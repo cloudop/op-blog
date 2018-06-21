@@ -223,6 +223,7 @@
         float: left;
         height: 44px;
         font-size: 14px;
+        margin-right: 10px;
     }
     .nav-scroller a:hover {
         color: #888;

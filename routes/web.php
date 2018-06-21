@@ -23,6 +23,6 @@ Route::group(['prefix' => 'index'], function()
 
 Route::group(['prefix' => 'post'], function()
 {
-    Route::get('show', 'PostController@show');
+    Route::get('{id}/{slug}', 'PostController@show');
     Route::get('sidebar', 'PostController@sidebar');
 });

@@ -9,7 +9,7 @@
         <h4 class="title">系列</h4>
         <ol class="list-unstyled mb-0">
             @foreach ($postArr as $post)
-            <li><a class="post-head" data-pjax href="/post/show?id={{$post['id']}}">{{$post['head']}}</a></li>
+            <li><a class="post-head" data-pjax href="/post/{{$post['id']}}/{{$post['subhead']}}">{{$post['head']}}</a></li>
             @endforeach
         </ol>
     </div>

@@ -11,29 +11,28 @@ class PostController extends Controller
     {
     }
 
-    public function show(Request $request)
+    public function show(int $id)
     {
         try {
-            $input = $request->only('id');
             $assignArr = [
                 'prev' => false,
                 'next' => false
             ];
             $cond = [
-                ['id', '>=', $input['id']]
+                ['id', '>=', $id]
             ];
             $rs = Models\Post::where($cond)->orderBy('id', 'asc')->take(2)->get();
             if ($rs) {
                 foreach ($rs->toArray() as $key => $value) {
-                    if ($value['id'] == $input['id']) {
+                    if ($value['id'] == $id) {
                         $assignArr['postData'] = $value;
                     }
-                    if ($value['id'] > $input['id']) {
+                    if ($value['id'] > $id) {
                         $assignArr['next'] = $value;
                     }
                 }
             }
-            $preData = Models\Post::select('id', 'head')->where([['id', '<', $input['id']]])->orderBy('id', 'desc')->first();
+            $preData = Models\Post::select('id', 'head', 'subhead')->where([['id', '<', $id]])->orderBy('id', 'desc')->first();
             if (!empty($preData)) {
                 $assignArr['prev'] = $preData;
             }
@@ -50,7 +49,7 @@ class PostController extends Controller
     {
         try {
             $input = $request->only('category_id', 'id');
-            $postRs = Models\Post::select('id', 'head')
+            $postRs = Models\Post::select('id', 'head', 'subhead')
                         ->where([
                                 ['category_id', $input['category_id']],
                                 ['id', '<>', $input['id']]
