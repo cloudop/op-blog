@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stat extends Model
 {
-    // public $timestamps = false;
+    public $timestamps = false;
     protected $fillable = [
         'post_id',
         'view',
