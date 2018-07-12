@@ -55,6 +55,7 @@
 
     });
 </script>
+@if (env('APP_ENV') != 'local')
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
@@ -62,6 +63,7 @@
     enable_page_level_ads: true
   });
 </script>
+@endif
 <div class="row">
     <div class="col-md-8 blog-main">
         @foreach ($posts as $key => $post)

@@ -1,5 +1,6 @@
 @extends('public/wrap')
 @section('main')
+@if (env('APP_ENV') != 'local')
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
   (adsbygoogle = window.adsbygoogle || []).push({
@@ -7,6 +8,7 @@
     enable_page_level_ads: true
   });
 </script>
+@endif
 <script>
     $(document).ready(function() {
         // 代码高亮
