@@ -25,29 +25,10 @@ class PostController extends Controller
             ];
             $rs = Models\Post::where($cond)->orderBy('id', 'asc')->take(2)->get();
             if ($rs) {
-                // $rs->each(function ($postData) use ($assignArr, $id) {
-                //     var_dump($postData->head);
-                //     if ($postData->id == $id) {
-                //         var_dump('aaa');
-                //         $assignArr['postData'] = $postData->toArray();
-                //     }
-                //     if ($postData->id > $id) {
-                //         $assignArr['next'] = $postData->toArray();
-                //     }
-                // });
-                // var_dump($assignArr);
                 foreach ($rs as $value) {
                     if ($value->id == $id) {
                         $assignArr['postData'] = $value;
-                        $r = Models\Stat::updateOrCreate([
-                            'post_id' => $value->id
-                        ], [
-                            'view' => DB::raw('view+1'),
-                        ]);
-                        // var_dump($r->wasRecentlyCreated);
-                        // var_dump($r->isDirty());
-                        // $value->stat;
-                        // $value->stat->increment('view');
+                        $value->stat->increment('view', 1);
                     }
                     if ($value->id > $id) {
                         $assignArr['next'] = $value;

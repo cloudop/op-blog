@@ -109,6 +109,12 @@ class PostController extends Controller
                 // ]);
                 // return back()->with(compact('error'));
             });
+            $form->saved(function (Form $form) {
+                $form->model()->id;
+                Models\Stat::create([
+                    'post_id' => $form->model()->id,
+                ]);
+            });
         });
     }
 
