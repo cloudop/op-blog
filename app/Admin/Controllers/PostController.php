@@ -30,6 +30,8 @@ class PostController extends Controller
             $content->row(function (Row $row) {
                 $row->column(12, function (Column $column) {
                     $grid = Admin::grid(Models\Post::class, function(Grid $grid){
+                        $grid->model()->orderBy('id', 'desc');
+                        
                         // 第一列显示id字段，并将这一列设置为可排序列
                         $grid->id('Id')->sortable();
                         $grid->head('标题')->editable()->setAttributes(['width' => '40%']);
