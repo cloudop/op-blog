@@ -7,7 +7,7 @@
 
     <div class="p-3 mb-3 bg-light widget border">
         <h4 class="title">系列</h4>
-        <ol class="list-unstyled mb-0">
+        <ol class="list-unstyled mb-0 related">
             @foreach ($postArr as $post)
             <li><a class="post-head" data-pjax href="/post/{{$post['id']}}/{{$post['subhead']}}">{{$post['head']}}</a></li>
             @endforeach

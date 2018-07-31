@@ -66,7 +66,7 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      /* font-family: "Playfair Display", Georgia, "Times New Roman", serif; */
     }
 
     .display-4 {
@@ -159,11 +159,14 @@
       /* box-shadow: 2px 5px 7px rgba(0,0,0,.5); */
     }
     .blog-post p {
-        margin-bottom: 0;
-        padding:0 5px;
+        margin-bottom: 2px;
+        padding:0 7px;
     }
     .blog-post pre {
         margin-bottom: 10px;
+    }
+    .blog-post h4 {
+        font-size: 25px;
     }
     .blog-post-title {
         margin: 15px 0 10px;

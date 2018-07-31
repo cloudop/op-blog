@@ -22,7 +22,7 @@ h4 {
 }
 
 h5 {
-    font-size: 1em
+    /* font-size: 1em */
 }
 
 h6 {
@@ -554,6 +554,10 @@ pre {
 
 .widget .ad img {
     max-width: 100%
+}
+
+.widget .related {
+    font-size: 14px;
 }
 
 

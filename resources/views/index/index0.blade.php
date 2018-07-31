@@ -64,7 +64,7 @@
         <div class="@if ($key%2 == 0)row_striped @endif row align-items-center blog-post border-top border-left border-right @if ($loop->last) border-bottom @endif">
             <div class="col-md-3"><img  width="150" style="height: 150px;" class="img-thumbnail" data-thumbnail="thumb{{$post['id']}}" src="/tmp.svg"></div>
             <div class="col-md-9">
-                <h4><a class="post-head" data-pjax href="/post/{{$post['id']}}/{{$post['subhead']}}">{{$post['head']}}</a></h4>
+                <h5><a class="post-head" data-pjax href="/post/{{$post['id']}}/{{$post['subhead']}}">{{$post['head']}}</a></h5>
                 <p class="blog-post-meta"> <a class="text-muted" href="">{{$post['author']}}</a> · <a class="text-muted" href="">{{$post['category']['name']}}</a></p>
                 <p class="post-guide">{{$post['guide']}}</p>
                 <p class="post-date"><em><small class="text-muted">{{Carbon\Carbon::parse($post['created_at'])->format('Y-m-d')}}</small></em></p>
