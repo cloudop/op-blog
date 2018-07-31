@@ -158,6 +158,13 @@
       border-bottom: 2px solid #dee2e6 !important; */
       /* box-shadow: 2px 5px 7px rgba(0,0,0,.5); */
     }
+    .blog-post p {
+        margin-bottom: 0;
+        padding:0 5px;
+    }
+    .blog-post pre {
+        margin-bottom: 10px;
+    }
     .blog-post-title {
         margin: 15px 0 10px;
         font-size: 2.5rem;
