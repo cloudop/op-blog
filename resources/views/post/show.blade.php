@@ -25,6 +25,9 @@
         <div class="blog-post border shadow">
             <h2 class="blog-post-title">{{$postData['head']}}</h2>
             <p class="blog-post-meta border-bottom">{{Carbon\Carbon::parse($postData['created_at'])->format('Y-m-d')}} by <a class="text-muted" href="#">{{$postData['author']}}</a></p>
+            <div class="guide">
+                <p class="font-weight-light font-italic">{{$postData['guide']}}</p>
+            </div>
             {!!$postData['content']!!}
             <hr class="hr-dashed">
             <p>

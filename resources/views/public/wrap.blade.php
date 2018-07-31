@@ -290,7 +290,7 @@
         font-family: none;
         font-size: none;
         margin-bottom: 0;
-        margin-top: 10px;
+        margin-top: 40px;
         padding-left: 3px;
     }
     .post-date {
@@ -312,6 +312,18 @@
         border-style: none none dashed;
         border-width: medium medium 1px;
         margin-bottom: 10px;
+    }
+    .guide {
+        background-color: #fafbff;
+        border: 1px solid transparent;
+        border-color: #f1f3f7;
+        border-radius: 0.25rem;
+        margin-top: 10px;
+        padding: 0 10px;
+    }
+    .guide p {
+        font-size: 13px;
+        margin: 0;
     }
     </style>
 </head>

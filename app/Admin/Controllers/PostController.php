@@ -31,7 +31,7 @@ class PostController extends Controller
                 $row->column(12, function (Column $column) {
                     $grid = Admin::grid(Models\Post::class, function(Grid $grid){
                         $grid->model()->orderBy('id', 'desc');
-                        
+
                         // 第一列显示id字段，并将这一列设置为可排序列
                         $grid->id('Id')->sortable();
                         $grid->head('标题')->editable()->setAttributes(['width' => '40%']);
@@ -45,6 +45,10 @@ class PostController extends Controller
                         // });
                         // 下面为三个时间字段的列显示
                         $grid->created_at('创建时间');
+
+                        $grid->stat()->view('浏览数');
+                        $grid->stat()->six('6');
+                        $grid->stat()->nine('9');
                         // filter($callback)方法用来设置表格的简单搜索框
                         $grid->filter(function ($filter) {
                             // 设置created_at字段的范围查询
