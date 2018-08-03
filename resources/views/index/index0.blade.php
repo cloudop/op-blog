@@ -16,42 +16,19 @@
 
 
         setTimeout(() => {
-            let option = {
-                scale: 2,
-                logging: false
-            }
-            let thumbnail = function(i)
-            {
-                return new Promise(function(resolve, reject) {
-                    if (typeof $('img[data-thumbnail]')[i] == 'undefined') {
-                        reject('no el');
-                    }
+            (async function() {
+                let option = {
+                    scale: 2,
+                    logging: false
+                }
+                for (let i = 0; i < $('img[data-thumbnail]').length; i++) {
                     let thumbEl = $($('img[data-thumbnail]')[i]);
-                    html2canvas($('#'+ thumbEl.data('thumbnail'))[0], option).then(canvas => {
-                        thumbEl.attr('src', canvas.toDataURL());
-                        $('#'+ thumbEl.data('thumbnail')).remove();
-                        let next = i + 1;
-                        resolve(next);
-                    });
-                });
-            }
-            let doThumb = function(i)
-            {
-                thumbnail(i).then(next => {
-                    doThumb(next);
-                }).catch(reason => {
-                    console.log(reason);
-                })
-            }
-            doThumb(0);
-            // $('img[data-thumbnail]').each(function(i, element){
-            //     html2canvas($('#'+ $(element).data('thumbnail'))[0], option).then(canvas => {
-            //         $(element).attr('src', canvas.toDataURL());
-            //         $('#'+ $(element).data('thumbnail')).remove();
-            //     });
-            // });
+                    let canvasRs = await html2canvas($('#'+ thumbEl.data('thumbnail'))[0], option);
+                    thumbEl.attr('src', canvasRs.toDataURL());
+                    $('#'+ thumbEl.data('thumbnail')).remove();
+                }
+            })();
         }, 100);
-
 
     });
 </script>
