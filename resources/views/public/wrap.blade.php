@@ -1,5 +1,4 @@
 @if (Request::ajax() == false)
-<!doctype html>
 <body>
     <div class="container">
         <h4 class="domain"><font color="#a33133">clougop</font><font style="font-size:14px;">.com</font></h4>
