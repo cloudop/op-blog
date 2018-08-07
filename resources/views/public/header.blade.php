@@ -11,43 +11,7 @@
     <link href="{{ URL::asset('css/screen.min.css') }}" media='all' rel='stylesheet' type='text/css' />
     <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script defer src="{{ URL::asset('js/fontawesome-all.js') }}"></script>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet"> -->
     <style>
-    /* google fonts api fk wall */
-    /* latin-ext */
-    @font-face {
-        font-family: 'Playfair Display';
-        font-style: normal;
-        font-weight: 700;
-        src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBYf9lWAe5j5hNKe1_w.woff2) format('woff2');
-        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
-    /* latin */
-    @font-face {
-        font-family: 'Playfair Display';
-        font-style: normal;
-        font-weight: 700;
-        src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBYf9lW4e5j5hNKc.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-    /* latin-ext */
-    @font-face {
-        font-family: 'Playfair Display';
-        font-style: normal;
-        font-weight: 900;
-        src: local('Playfair Display Black'), local('PlayfairDisplay-Black'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBb__lWAe5j5hNKe1_w.woff2) format('woff2');
-        unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
-    /* latin */
-    @font-face {
-        font-family: 'Playfair Display';
-        font-style: normal;
-        font-weight: 900;
-        src: local('Playfair Display Black'), local('PlayfairDisplay-Black'), url(/font/nuFlD-vYSZviVYUb_rj3ij__anPXBb__lW4e5j5hNKc.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-
     /* stylelint-disable selector-list-comma-newline-after */
     .blog-header {
         height: 50px;
