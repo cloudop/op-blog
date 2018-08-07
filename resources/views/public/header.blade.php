@@ -10,7 +10,8 @@
     <link href="{{ URL::asset('css/highlight/atom-one-dark.css') }}" media='all' rel='stylesheet' type='text/css' />
     <link href="{{ URL::asset('css/screen.min.css') }}" media='all' rel='stylesheet' type='text/css' />
     <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('bower_components/jquery-pjax/jquery.pjax.js') }}"></script>
+    <script src="{{ URL::asset('bower_components/nprogress/nprogress.js') }}"></script>
     <style>
     /* stylelint-disable selector-list-comma-newline-after */
     .blog-header {

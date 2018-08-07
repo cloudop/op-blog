@@ -31,8 +31,6 @@
            <a href="#">Back to top</a>
         </p>
     </footer>
-<script src="{{ URL::asset('bower_components/jquery-pjax/jquery.pjax.js') }}"></script>
-<script src="{{ URL::asset('bower_components/nprogress/nprogress.js') }}"></script>
 <script src="{{ URL::asset('js/highlight.js') }}"></script>
 <script>
     $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container');

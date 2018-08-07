@@ -4,21 +4,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models;
-use Illuminate\Support\Facades;
 
 class IndexController extends Controller
 {
-
+    use FlushTrait;
     public function __construct()
     {
-        if (Facades\Request::ajax() == false) {
-            $assignArr = [
-                'title' => 'clougop',
-                'guide' => '林云开的个人站'
-            ];
-            $view = Facades\View::make('public/header', $assignArr);
-            echo $view->render();
-        }
+        $this->flushHeader();
     }
 
     public function index(Request $request)

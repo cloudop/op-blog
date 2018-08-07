@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
+    use FlushTrait;
     public function __construct()
     {
+        $this->flushHeader();
     }
 
     public function show(int $id)
