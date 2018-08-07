@@ -1,5 +1,6 @@
 <?php
-
+ob_implicit_flush(true);
+ob_end_flush();
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

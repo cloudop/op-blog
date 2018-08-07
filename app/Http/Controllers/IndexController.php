@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models;
+use Illuminate\Support\Facades;
 
 class IndexController extends Controller
 {
+
+    public function __construct()
+    {
+        if (Facades\Request::ajax() == false) {
+            $assignArr = [
+                'title' => 'clougop',
+                'guide' => '林云开的个人站'
+            ];
+            $view = Facades\View::make('public/header', $assignArr);
+            echo $view->render();
+        }
+    }
 
     public function index(Request $request)
     {
