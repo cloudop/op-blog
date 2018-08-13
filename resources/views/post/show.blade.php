@@ -29,6 +29,10 @@
                 <p class="font-weight-light font-italic">{{$postData['guide']}}</p>
             </div>
             {!!$postData['content']!!}
+            <p class="blog-like">
+                <span id="like-tips" class="like-tips float-right text-danger font-weight-bold" style="position: absolute; display: none;">+1</span>
+                <span class="float-right"><a title="like" data-id="{{$postData['id']}}" class="like" href="javascript:;">666</a>[<span>{{$statData['six']}}</span>] <a title="unlike" data-id="{{$postData['id']}}" class="unlike" href="javascript:;">999</a>[<span>{{$statData['nine']}}</span>]</span>
+            </p>
             <hr class="hr-dashed">
             <p>
                 @if ($prev)
@@ -41,4 +45,56 @@
         </div><!-- /.blog-post -->
     </div><!-- /.blog-main -->
 </div><!-- /.row -->
+<script>
+$(document).ready(() => {
+    let likeTips = $('#like-tips')
+    $('a.like').click(likeTips, function() {
+        $(this).off('click');
+        $('a.unlike').off('click');
+        let $this = $(this);
+        likeTips.html('loading').addClass('text-secondary').removeClass('text-danger').show().css({
+            left: ($this.position().left),
+            top: ($this.position().top - 25),
+        });
+        $.get('/post/favorite/{{$postData['id']}}/1', function(resp) {
+            if (resp.code != 0) {
+                likeTips.fadeOut();
+                return;
+            }
+            let count = parseInt($this.next().html());
+            $this.next().html(count + 1);
+            likeTips.html('+1').addClass('text-danger').removeClass('text-secondary').show().css({
+                left: ($this.position().left + 8),
+                top: ($this.position().top - 10),
+            }).animate({top: ($this.position().top - 25)}, 400, function() { likeTips.fadeOut(200) });
+        });
+    });
+
+    $('a.unlike').click(likeTips, function(e) {
+        $(this).off('click');
+        $('a.like').off('click');
+        let $this = $(this);
+        likeTips.html('loading').addClass('text-secondary').removeClass('text-danger').show().css({
+            left: ($this.position().left),
+            top: ($this.position().top - 25),
+        });
+
+        $.get('/post/favorite/{{$postData['id']}}/0', function(resp) {
+            if (resp.code != 0) {
+                likeTips.fadeOut();
+                return;
+            }
+            let count = parseInt($this.next().html());
+            $this.next().html(count + 1);
+            likeTips.html('T.T').addClass('text-secondary').removeClass('text-danger').show().css({
+                left: ($this.position().left + 5),
+                top: ($this.position().top - 10),
+            }).animate({top: ($this.position().top - 25)}, 400, function() {
+                likeTips.fadeOut(200);
+            });
+        });
+    });
+
+})
+</script>
 @endsection

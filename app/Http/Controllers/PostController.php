@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Models;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +31,7 @@ class PostController extends Controller
                 foreach ($rs as $value) {
                     if ($value->id == $id) {
                         $assignArr['postData'] = $value;
+                        $assignArr['statData'] = $value->stat->toArray();
                         $value->stat->increment('view', 1);
                     }
                     if ($value->id > $id) {
@@ -74,5 +76,32 @@ class PostController extends Controller
             echo $e->getMessage();
         }
     }
+
+    public function favorite(int $postId, int $likeOrNot)
+    {
+        try {
+            $checkKey = 'post-favorite-'. $postId. '-'. $_SERVER['REMOTE_ADDR'];
+            $check = Models\Check::firstOrCreate(['key' => $checkKey]);
+            if ($check->wasRecentlyCreated != true) {
+                throw new \Exception('duplicate');
+            }
+            $field = 'nine';
+            if ($likeOrNot) {
+                $field = 'six';
+            }
+            Models\Stat::where('post_id', $postId)->increment($field, 1);
+            return response()->json([
+                'code' => '0',
+                'message' => 'success'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'code' => '-1',
+                'message' => $e->getMessage(),
+                'exception' => $e->getLine(). ' '. $e->getFile(). ' '. $e->getMessage()
+            ]);
+        }
+    }
+
 
 }

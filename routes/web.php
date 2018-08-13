@@ -23,6 +23,7 @@ Route::group(['prefix' => 'index'], function()
 
 Route::group(['prefix' => 'post'], function()
 {
+    Route::get('favorite/{id}/{likeOrNot}', 'PostController@favorite');
     Route::get('{id}/{slug}', 'PostController@show');
     Route::get('sidebar', 'PostController@sidebar');
 });

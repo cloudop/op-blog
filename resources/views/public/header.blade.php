@@ -14,6 +14,23 @@
     <script src="{{ URL::asset('bower_components/nprogress/nprogress.js') }}"></script>
     <style>
     /* stylelint-disable selector-list-comma-newline-after */
+    .blog-like {
+        height: 30px;
+        color: #c8c7cc;
+    }
+    .blog-like a {
+        font-weight: bold;
+        font-style: italic;
+    }
+    .blog-like .like {
+        color: #faa;
+    }
+    .blog-like .unlike {
+        color: #aaf;
+    }
+    .like-tips {
+        font-size: 14px;
+    }
     .blog-header {
         height: 50px;
       line-height: 1;
