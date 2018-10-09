@@ -3,6 +3,7 @@
         <h5 class="title"><img height="40px" width="40px" class="avatar" src="{{URL::asset('img/sunknight.png')}}">{{$aboutMe['name']}}</h5>
         <p class="mb-0"><em>{{$aboutMe['github']}}</em></p>
         <p class="mb-0"><em>{{$aboutMe['email']}}</em></p>
+        <p class="mb-0"><em><a href="mailto:cloudop@gmail.com">{{$aboutMe['status']}}</a></em></p>
     </div>
     <!-- <div class="p-3">
         <h4 class="font-italic">Archives</h4>

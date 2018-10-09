@@ -26,7 +26,8 @@ class AppServiceProvider extends ServiceProvider
         $aboutMe = [
             'name' => '林 云开',
             'github' => 'https://github.com/cloudop',
-            'email' => 'cloudop@gmail.com'
+            'email' => 'cloudop@gmail.com',
+            'status' => 'Remote Working'
         ];
         View::share('aboutMe', $aboutMe);
     }
