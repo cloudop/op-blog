@@ -11,7 +11,8 @@
         "laravel-admin-ext/log-viewer": "^1.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.4",
-        "perftools/php-profiler": "^0.18.0"
+        "perftools/php-profiler": "^0.18.0",
+        "swooletw/laravel-swoole": "^2.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",
